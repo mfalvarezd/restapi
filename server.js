@@ -10,12 +10,17 @@ require('dotenv').config()
   /* Referencia al archivo con la descripción */
   const swaggerFile = require('./swagger_output.json')
   
+  const auth_middleware = require('./middleware/authMiddleware.js');
 
  admin.initializeApp({
    credential: admin.credential.cert(serviceAccount)
  });
 
  const app = express();
+ const apiRoutes = require('./routes/api');
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
+ app.use('/api',auth_middleware, apiRoutes);
  app.use(bodyParser.json());
 
  const PORT = process.env.PORT || 5000;
