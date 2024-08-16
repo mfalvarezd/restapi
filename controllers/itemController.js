@@ -8,6 +8,7 @@ exports.createItem = async (req, res) => {
       #swagger.description = 'Create an item'
       #swagger.summary = 'Create an item'
       #swagger.parameters['token'] = {
+         in: 'header'
          description: 'Token to get item',
          required: true
       }
@@ -67,7 +68,7 @@ exports.getItem = async (req, res) => {
       #swagger.description = 'Get an item entry'
       #swagger.summary = 'Get an item entry'
       #swagger.parameters['token']={
-         in:'body',
+         in:'header',
          description: 'Token to get item',
          required:true
       }
@@ -106,7 +107,7 @@ exports.updateItem = async (req, res) => {
           #swagger.description = ''
           #swagger.summary = ''
           #swagger.parameters['token']={
-            in:'body',
+            in:'header',
             description: 'Token to get item',
             required:true
             }
@@ -146,6 +147,7 @@ exports.deleteItem = async (req, res) => {
         #swagger.description = ''
         #swagger.summary = ''
         #swagger.parameters['token']={
+            in: 'header'
             description: 'Token to get item',
             required:true
         }
